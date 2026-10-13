@@ -1,0 +1,810 @@
+@font-face {
+  font-family: 'Punk Babe';
+  src: url('./assets/punkbabe/PUNKBABE TRIAL.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DK Crayonista';
+  src: url('./assets/dk_crayonista/DK Crayonista.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---- 3-color theme ----
+     LIGHT: Ivory (background), Navy (text), Dusty Blue (buttons and details)
+     DARK:  Navy (background), Ivory (text), Dusty Blue (accent) */
+  --color-ivory: #E8E1D6;
+  --color-navy: #1F2530;
+  --color-dusty-blue: #A7B8C7;
+
+  /* Theme variables (LIGHT mode) */
+  --bg: #E8E1D6;
+  --card-bg: #DED8CE;
+  --text-main: #1F2530;
+  --heading: #1F2530;
+  --muted: #575A5F;
+  --accent: #1F2530;
+  --border: #A7B8C7;
+  --focus-color: #1F2530;
+  --btn-bg: #A7B8C7;
+  --btn-bg-hover: #BDCBD7;
+  --btn-text: #1F2530;
+  --btn-border: #1F2530;
+  --btn-border-hover: #1F2530;
+  --btn2-bg: #F4F0E8;
+  --btn2-bg-hover: #ECE6DB;
+  --btn2-border: #1F2530;
+  --outline-color: #1F2530;
+  --outline-hover-text: #E8E1D6;
+  --tag-bg: #A7B8C7;
+  --tag-text: #1F2530;
+  --tag-border: #A7B8C7;
+
+  /* Older variable names, kept so nothing breaks */
+  --color-pink-50: var(--bg);
+  --color-pink-100: var(--bg);
+  --color-pink-200: var(--border);
+  --color-pink-300: #A7B8C7;
+  --color-pink-400: var(--accent);
+  --color-pink-500: var(--accent);
+  --color-pink-600: var(--accent);
+  --color-pink-700: var(--text-main);
+  --color-pink-800: var(--text-main);
+  --color-dark-800: #2B3039;
+  --color-dark-900: #1F2530;
+  --color-white: #E8E1D6;
+  --color-transparent: transparent;
+  --lavender-blush: var(--card-bg);
+  --mimi-pink: var(--border);
+  --dusty-pink: var(--accent);
+  --dusty-pink-dark: var(--accent);
+  --dusty-pink-darker: var(--accent);
+  --white: var(--bg);
+  --light-pink-bg: var(--bg);
+  --text-pink: var(--text-main);
+}
+
+/* DARK mode */
+.dark {
+  --bg: #1F2530;
+  --card-bg: #2B3039;
+  --text-main: #E8E1D6;
+  --heading: #E8E1D6;
+  --muted: #ACA9A4;
+  --accent: #A7B8C7;
+  --border: rgba(167, 184, 199, 0.45);
+  --focus-color: #A7B8C7;
+  --btn-bg: #A7B8C7;
+  --btn-bg-hover: #BDCBD7;
+  --btn-text: #1F2530;
+  --btn-border: #A7B8C7;
+  --btn-border-hover: #BDCBD7;
+  --btn2-bg: #E8E1D6;
+  --btn2-bg-hover: #F4F0E8;
+  --btn2-border: #E8E1D6;
+  --outline-color: #A7B8C7;
+  --outline-hover-text: #1F2530;
+  --tag-bg: transparent;
+  --tag-text: #A7B8C7;
+  --tag-border: #A7B8C7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Prevent default link styling */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover, a:visited, a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Focus styles for keyboard navigation */
+a:focus,
+button:focus,
+[tabindex]:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  padding: 8px 16px;
+  border-radius: 0 0 4px 0;
+  z-index: 100;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.app {
+  min-height: 100vh;
+  background: var(--bg);
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Navigation Styles */
+.navigation {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 99999 !important;
+}
+
+/* Desktop navigation - show by default */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Dark mode toggle icon fix */
+.theme-toggle__expand {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 22px !important;
+  height: 22px !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+  color: inherit !important;
+}
+
+.theme-toggle__expand svg {
+  width: 22px !important;
+  height: 22px !important;
+  display: block !important;
+}
+
+/* Fix for svg paths in both sun and moon states */
+.theme-toggle__expand svg > * {
+  fill: currentColor !important;
+}
+
+/* Ensure visibility in mobile menu */
+.mobile-menu .theme-toggle__expand,
+.mobile-menu .theme-toggle__expand svg {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Mobile menu button - hidden by default */
+.mobile-menu-btn {
+  display: none !important;
+}
+
+.dark .navigation {
+  background: rgba(31, 37, 48, 0.6);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(167, 184, 199, 0.3);
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+}
+
+.navigation.scrolled {
+  background: rgba(232, 225, 214, 0.92);
+  border-bottom: 1px solid rgba(167, 184, 199, 0.8);
+  box-shadow: 0 4px 30px rgba(31, 37, 48, 0.1);
+}
+
+.dark .navigation.scrolled {
+  background: rgba(31, 37, 48, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(167, 184, 199, 0.4);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.signature-name {
+  font-family: 'Punk Babe', sans-serif;
+  font-size: 2.5rem;
+  color: var(--heading);
+  margin: 0;
+  font-weight: normal;
+  letter-spacing: 2px;
+  flex-shrink: 0;
+  line-height: 1;
+  /* Button reset styles for accessibility */
+  padding: 0.2rem 0 0 0;
+  text-align: left;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-tab {
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem; /* Increased for 44px touch target */
+  min-height: 44px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-tab:focus {
+  outline: none;
+}
+
+.nav-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-tab:hover::after {
+  width: 100%;
+}
+
+.nav-tab.active {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.nav-tab.active::after {
+  width: 100%;
+  background: var(--accent);
+}
+
+/* Main Content */
+.main-content {
+  padding-top: 80px;
+}
+
+/* Section Styles */
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.section-content {
+  max-width: 1200px;
+  width: 100%;
+  background: transparent;
+  backdrop-filter: none;
+  border-radius: 0;
+  padding: 3rem;
+  box-shadow: none;
+  border: none;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.section h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--heading);
+}
+
+.section p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  min-height: 35vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 1rem 0;
+}
+
+.hero-content {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg);
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+.ascii-container {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 60px;
+}
+
+.ascii-morph-text {
+  display: block;
+  width: 100%;
+}
+
+.ascii-morph-text span {
+  transition: color 0.3s ease;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  margin: 0.25rem 0;
+  font-weight: 600;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.hero-subtitle span {
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Theme-specific overrides for hero subtitle (solid colors, easy to read) */
+.hero-subtitle-light {
+  background: none !important;
+  -webkit-text-fill-color: #1F2530 !important;
+  color: #1F2530 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.hero-subtitle-dark {
+  background: none !important;
+  -webkit-text-fill-color: #A7B8C7 !important;
+  color: #A7B8C7 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin: 1.2rem 0 1rem 0;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+/* Hero buttons (Resume and Contact): both are soft ivory with navy text */
+.hero-action-btn {
+  background: var(--btn2-bg);
+  border: 2px solid var(--btn2-border);
+  color: var(--btn-text);
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-action-btn:hover {
+  background: var(--btn2-bg-hover);
+  border-color: var(--btn2-border);
+  color: var(--btn-text);
+  transform: translateX(2px);
+}
+
+/* The Contact button is a link (<a>). It is soft ivory with navy text, so it is easy to see.
+   (Links have their own hover/visited colors, so these rules keep the text color fixed.) */
+a.hero-action-btn,
+a.hero-action-btn:visited,
+a.hero-action-btn:active,
+.hero-action-btn.hero-action-btn-outline {
+  background: var(--btn2-bg);
+  border-color: var(--btn2-border);
+  color: var(--btn-text);
+}
+
+a.hero-action-btn:hover,
+.hero-action-btn.hero-action-btn-outline:hover {
+  background: var(--btn2-bg-hover);
+  border-color: var(--btn2-border);
+  color: var(--btn-text);
+}
+
+.hero-description {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  margin: 0.25rem 0 1rem;
+}
+
+/* Draggable Stars */
+.draggable-star {
+  animation: twinkle 3s infinite;
+  z-index: 1 !important;
+}
+
+.draggable-star:nth-child(odd) {
+  animation-delay: 0.5s;
+}
+
+.draggable-star:nth-child(even) {
+  animation-delay: 1s;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.8;
+    transform: rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(10deg);
+  }
+}
+
+.draggable-star:hover {
+  filter: brightness(1.2);
+}
+
+/* Project card title: turns the accent color on hover (dusty blue in dark, navy in light) */
+.group:hover .project-card-title {
+  color: var(--accent) !important;
+}
+
+/* Ensure project cards are above stars */
+#projects .grid > * {
+  position: relative;
+  z-index: 20;
+  background: var(--card-bg);
+}
+
+.scroll-down-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(31, 37, 48, 0.2);
+  outline: none;
+}
+
+.scroll-down-btn:focus {
+  outline: none;
+}
+
+.scroll-down-btn:hover {
+  background: var(--btn-bg-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(31, 37, 48, 0.3);
+}
+
+/* Project Buttons */
+.project-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 2px solid var(--btn-border);
+  padding: calc(0.75rem - 2px) calc(1.25rem - 2px); /* Increased for touch targets */
+  min-height: 44px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(31, 37, 48, 0.2);
+  outline: none;
+}
+
+.project-btn:focus {
+  outline: none;
+}
+
+.project-btn:hover {
+  background: var(--btn-bg-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(31, 37, 48, 0.3);
+}
+
+.project-btn-outline {
+  background: transparent;
+  color: var(--outline-color);
+  border: 2px solid var(--outline-color);
+  padding: calc(0.75rem - 2px) calc(1.25rem - 2px); /* Increased for touch targets */
+  min-height: 44px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.project-btn-outline:focus {
+  outline: none;
+}
+
+.project-btn-outline:hover {
+  background: rgba(167, 184, 199, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(31, 37, 48, 0.2);
+}
+
+.dark .project-btn-outline:hover {
+  background: rgba(167, 184, 199, 0.1);
+}
+
+/* Typewriter styles */
+.typewriter {
+  display: inline-block;
+  min-width: 200px;
+  text-align: left;
+  margin-left: 0.5rem;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s infinite;
+  color: var(--accent);
+  font-weight: normal;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .signature-name {
+    font-size: 2rem;
+  }
+  
+  .main-content {
+    padding-top: 70px;
+  }
+  
+  .nav-container {
+    padding: 0 1rem;
+  }
+  
+  /* Hide desktop nav on mobile */
+  .desktop-nav {
+    display: none !important;
+  }
+  
+  /* Show mobile menu button on mobile */
+  .mobile-menu-btn {
+    display: block !important;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  /* Mobile menu styles */
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .mobile-menu.open {
+    max-height: 400px;
+  }
+  
+  .mobile-nav-tab {
+    min-height: 44px;
+    width: 100%;
+  }
+  
+  .mobile-nav-tab:hover {
+    background: rgba(167, 184, 199, 0.35);
+  }
+  
+  .dark .mobile-nav-tab:hover {
+    background: rgba(167, 184, 199, 0.1);
+  }
+  
+  .section h2 {
+    font-size: 2rem;
+  }
+  
+  .section p {
+    font-size: 1rem;
+  }
+  
+  .section-content {
+    padding: 2rem;
+  }
+  
+  .ascii-text {
+    font-size: clamp(0.4rem, 1.5vw, 0.8rem);
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .ascii-container {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  /* Fix hamburger menu positioning on very small screens */
+  .mobile-menu-btn {
+    position: relative !important;
+    z-index: 1001 !important;
+  }
+
+  .nav-container {
+    padding: 0 0.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Extra small screens (iPhone SE and similar) */
+@media (max-width: 375px) {
+  .nav-container {
+    padding: 0 0.25rem !important;
+  }
+
+  .signature-name {
+    font-size: 1.75rem !important;
+  }
+
+  .mobile-menu-btn {
+    min-width: 40px !important;
+    min-height: 40px !important;
+  }
+
+  .ascii-container {
+    text-align: left !important;
+    justify-content: flex-start !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Ensure containers don't cause overflow */
+  .container {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Force all sections to respect viewport width */
+  * {
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Fix modal on very small screens */
+  .fixed.inset-0 {
+    padding: 0.5rem !important;
+  }
+
+  /* Ensure carousel images display properly */
+  .relative.w-full.bg-black {
+    min-height: 250px !important;
+    max-height: 70vh !important;
+  }
+}
+
+/* Project carousel slide animations */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

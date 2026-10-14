@@ -35,13 +35,25 @@ const About = () => {
   ];
 
   // ---- About me text (edit this!) ----
-  const aboutParagraphs = [
-    "I'm a mechanical engineering student at Georgia Tech who likes building things that move.",
-    "I research multiphase turbulence with AI and machine learning, and I design robots and products in SolidWorks.",
-    "Right now I'm building an autonomous arena robot for my design class and working on the mechanical team for HyTech Racing.",
-    // Add a line about what you like to do outside of class here, for example:
-    // "When I'm not in the lab, you'll find me ...",
-  ];
+ const aboutParagraphs = [
+  <>
+    I'm a mechanical engineering student at Georgia Tech who loves
+    <strong className="font-bold"> designing and building things</strong>.
+    My research work includes multiphase flow simulations and using
+    <strong className="font-bold"> AI and machine learning</strong> to predict how flows evolve.
+  </>,
+  <>
+    I'm especially inspired by the
+    <strong className="font-bold"> engineering behind Formula 1</strong>
+    and how design and problem-solving come together to make a car perform.
+    Outside of engineering, I enjoy
+    <strong className="font-bold"> art, creating things, and playing tennis</strong>.
+  </>,
+  <>
+    I'm currently looking for internships in
+    <strong className="font-bold"> mechanical design, robotics, automotive engineering, and manufacturing</strong>.
+  </>
+];
 
   // Journal page styles
   const pageStyle: React.CSSProperties = {
@@ -364,28 +376,33 @@ const About = () => {
                   className="flex-1 p-6 md:p-10 md:pl-14 rounded-xl md:rounded-l-none"
                   style={pageStyle}
                 >
-                  <h3
-                    className="text-4xl mb-4"
-                    style={{
-                      fontFamily: "'DK Crayonista', cursive",
-                      color: '#1F2530'
-                    }}
-                  >
-                    hi!
-                  </h3>
-                  {aboutParagraphs.map((paragraph, index) => (
-                    <p
-                      key={index}
-                      className="text-lg md:text-xl mb-3"
-                      style={{
-                        fontFamily: "'DK Crayonista', cursive",
-                        lineHeight: 1.9,
-                        color: '#1F2530'
-                      }}
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
+              <h3
+  className="text-4xl mb-4"
+  style={{
+    fontFamily: "'DK Crayonista', cursive",
+    color: '#171717',
+    WebkitTextStroke: '0.5px #171717',
+    textShadow: '0 0 0.5px rgba(23, 23, 23, 0.5)'
+  }}
+>
+  Hi!
+</h3>
+
+{aboutParagraphs.map((paragraph, index) => (
+  <p
+    key={index}
+    className="text-lg md:text-xl mb-3"
+    style={{
+      fontFamily: "'DK Crayonista', cursive",
+      lineHeight: 1.8,
+      color: '#171717',
+      WebkitTextStroke: '0.25px #171717',
+      textShadow: '0 0 0.3px rgba(23, 23, 23, 0.4)'
+    }}
+  >
+    {paragraph}
+  </p>
+))}
                 </div>
               </div>
             </div>

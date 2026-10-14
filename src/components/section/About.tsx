@@ -10,13 +10,19 @@ import { profile1, profile2, profile3, stickers as stickerImages } from '../../a
 
 const About = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [asciiText, setAsciiText] = useState('');
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const { isDarkMode } = useDarkMode();
   const themeColors = useThemeColors();
+
+  // ---- STICKER SETTINGS ----
+  // 1. Leave SHOW_STICKER_NUMBERS = true to see a number on every sticker.
+  // 2. Write the numbers of the stickers you want to remove inside hiddenStickerIds, like [3, 7, 12].
+  // 3. When you're done, change SHOW_STICKER_NUMBERS to false.
+  const SHOW_STICKER_NUMBERS = true;
+  const hiddenStickerIds: number[] = [];
 
   const roles = [
     'Mechanical Engineering Student @ Georgia Tech'
@@ -29,25 +35,14 @@ const About = () => {
   ];
 
   // ---- About me text (edit this!) ----
-const aboutParagraphs = [
-  <>
-    I'm a mechanical engineering student at Georgia Tech who loves
-    <strong className="font-bold"> designing and building things</strong>.
-    My research work includes multiphase flow simulations and using
-    <strong className="font-bold"> AI and machine learning</strong> to predict how flows evolve.
-  </>,
-  <>
-    I'm especially inspired by the
-    <strong className="font-bold"> engineering behind Formula 1</strong>
-    and how design and problem-solving come together to make a car perform.
-    Outside of engineering, I enjoy
-    <strong className="font-bold"> art, creating things, and playing tennis</strong>.
-  </>,
-  <>
-    I'm currently looking for internships in
-    <strong className="font-bold"> mechanical design, robotics, automotive engineering, and manufacturing</strong>.
-  </>
-];
+  const aboutParagraphs = [
+    "I'm a mechanical engineering student at Georgia Tech who likes building things that move.",
+    "I research multiphase turbulence with AI and machine learning, and I design robots and products in SolidWorks.",
+    "Right now I'm building an autonomous arena robot for my design class and working on the mechanical team for HyTech Racing.",
+    // Add a line about what you like to do outside of class here, for example:
+    // "When I'm not in the lab, you'll find me ...",
+  ];
+
   // Journal page styles
   const pageStyle: React.CSSProperties = {
     backgroundColor: isDarkMode ? '#E8E1D6' : '#F4F0E8',
@@ -75,38 +70,6 @@ const aboutParagraphs = [
     pointerEvents: 'none'
   });
 
-  const fullAsciiArt = `⠀⠀⠀⠀⠀⠀⡖⠤⣀⣀⣀⣀⣀⣀⡠⠔⡆⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢠⢃⡟⠛⠉⡇⡇⡏⠙⠛⣇⢣⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢸⠁⢀⢤⣄⠁⠁⢁⢤⣄⠀⢹⠀⠀⠀⠀⠀
-⠀⠀⠀⠤⢄⣸⡉⠹⣿⡿⢀⣀⠸⣿⡿⠉⣹⣀⠤⠄⠀⠀
-⠀⠀⠀⠤⠔⠒⠊⠢⣀⡀⠤⠣⠄⣀⡠⠊⠒⠒⠤⠄⠀⠀
-⠀⠀⠀⠀⠀⢀⠎⠀⠀⠈⠉⠉⠉⠀⠀⠈⢆⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠐⡮⠄⠀⡄⠀⡄⠀⡄⠀⡄⠀⠬⡖⠀⠀⡀⠀
-⠀⠀⠀⠀⡜⠢⡄⠀⡇⠀⡇⠀⡇⠀⡇⠀⡤⠚⡄⠱⡨⣆
-⠀⠀⠀⢸⠐⠢⠜⡄⡇⠀⡇⡄⡇⠀⡇⡜⠤⠒⣸⠴⠥⡸
-⠀⠀⠀⠸⠤⠤⠤⠧⠧⠤⠧⠧⠧⠤⠧⠧⠤⠤⠼⠔⠒⠁`;
-
-  // Typewriter effect for ASCII art
-  useEffect(() => {
-    let currentIndex = 0;
-    const typingSpeed = 3; // Speed in milliseconds
-
-    const typeWriter = () => {
-      if (currentIndex < fullAsciiArt.length) {
-        setAsciiText(fullAsciiArt.substring(0, currentIndex + 1));
-        currentIndex++;
-        setTimeout(typeWriter, typingSpeed);
-      }
-    };
-
-    // Start typing after a small delay
-    const startDelay = setTimeout(() => {
-      typeWriter();
-    }, 500);
-
-    return () => clearTimeout(startDelay);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Only run once on mount
 
   useEffect(() => {
     let ticking = false;
@@ -282,9 +245,6 @@ const aboutParagraphs = [
                 </Link>
               </div>
             </div>
-            <div className="hidden md:block" style={{ fontSize: '0.8rem', lineHeight: '1', fontFamily: 'monospace', minHeight: '150px', color: isDarkMode ? themeColors.primary : themeColors.colors.pink[500] }}>
-              <pre>{asciiText}</pre>
-            </div>
           </div>
         </div>
       </div>
@@ -299,21 +259,40 @@ const aboutParagraphs = [
           <div className="flex items-center justify-center relative min-h-[400px] md:min-h-[600px]">
             {/* Animated Stickers */}
             <div className="absolute inset-0 flex items-center justify-center">
-              {stickers.map((sticker) => {
+              {stickers.filter((s) => !hiddenStickerIds.includes(s.id)).map((sticker) => {
                 const isVerySmall = window.innerWidth < 375;
                 const isMobile = window.innerWidth < 768;
                 return (
-                  <img
+                  <div
                     key={sticker.id}
-                    src={sticker.image}
-                    alt=""
                     className="absolute z-10 pointer-events-none select-none"
                     style={getStickerStyle(sticker)}
-                    loading={sticker.id <= 4 ? "eager" : "lazy"}
-                    decoding="async"
-                    width={isVerySmall ? "50" : isMobile ? "60" : "80"}
-                    height={isVerySmall ? "50" : isMobile ? "60" : "80"}
-                  />
+                  >
+                    <img
+                      src={sticker.image}
+                      alt=""
+                      className="w-full h-full"
+                      loading={sticker.id <= 4 ? "eager" : "lazy"}
+                      decoding="async"
+                      width={isVerySmall ? "50" : isMobile ? "60" : "80"}
+                      height={isVerySmall ? "50" : isMobile ? "60" : "80"}
+                    />
+                    {SHOW_STICKER_NUMBERS && (
+                      <span
+                        className="absolute top-0 left-0 flex items-center justify-center rounded-full font-bold"
+                        style={{
+                          width: '28px',
+                          height: '28px',
+                          fontSize: '15px',
+                          backgroundColor: '#1F2530',
+                          color: '#E8E1D6',
+                          border: '2px solid #E8E1D6'
+                        }}
+                      >
+                        {sticker.id}
+                      </span>
+                    )}
+                  </div>
                 );
               })}
             </div>
@@ -385,33 +364,28 @@ const aboutParagraphs = [
                   className="flex-1 p-6 md:p-10 md:pl-14 rounded-xl md:rounded-l-none"
                   style={pageStyle}
                 >
-<h3
-  className="text-4xl mb-4"
-  style={{
-    fontFamily: "'DK Crayonista', cursive",
-    color: '#171717',
-    WebkitTextStroke: '0.5px #171717',
-    textShadow: '0 0 0.5px rgba(23, 23, 23, 0.5)'
-  }}
->
-  Hi!
-</h3>
-
-{aboutParagraphs.map((paragraph, index) => (
-  <p
-    key={index}
-    className="text-lg md:text-xl mb-3"
-    style={{
-      fontFamily: "'DK Crayonista', cursive",
-      lineHeight: 1.8,
-      color: '#171717',
-      WebkitTextStroke: '0.25px #171717',
-      textShadow: '0 0 0.3px rgba(23, 23, 23, 0.4)'
-    }}
-  >
-    {paragraph}
-  </p>
-))}
+                  <h3
+                    className="text-4xl mb-4"
+                    style={{
+                      fontFamily: "'DK Crayonista', cursive",
+                      color: '#1F2530'
+                    }}
+                  >
+                    hi!
+                  </h3>
+                  {aboutParagraphs.map((paragraph, index) => (
+                    <p
+                      key={index}
+                      className="text-lg md:text-xl mb-3"
+                      style={{
+                        fontFamily: "'DK Crayonista', cursive",
+                        lineHeight: 1.9,
+                        color: '#1F2530'
+                      }}
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
               </div>
             </div>

@@ -58,27 +58,25 @@ const ResearchProject = () => {
         />
       </ProjectSection>
 
-      <ProjectSection title="Project Photo">
-        {projectImage ? (
-          <img
-            src={projectImage}
-            alt="MFlowDB turbulence simulation"
-            className="w-full rounded-lg shadow-lg"
-            style={{ maxHeight: '600px', objectFit: 'contain' }}
-          />
-        ) : (
-          <div
-            className="w-full rounded-lg flex items-center justify-center text-center p-6"
-            style={{
-              minHeight: '320px',
-              border: `2px dashed ${themeColors.colors.pink[300]}`,
-              color: isDarkMode ? themeColors.colors.white : themeColors.text.secondary
-            }}
-          >
-            Add your project photo here
-          </div>
-        )}
-      </ProjectSection>
+<ProjectSection title="Project Photos">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {[1, 2, 3, 4].map((item) => (
+      <div
+        key={item}
+        className="w-full h-64 rounded-lg flex items-center justify-center"
+        style={{
+          border: `2px dashed ${themeColors.colors.pink[300]}`,
+          color: isDarkMode
+            ? themeColors.colors.white
+            : themeColors.text.secondary,
+        }}
+      >
+        <span className="text-4xl">📷</span>
+      </div>
+    ))}
+  </div>
+</ProjectSection>
+
     </ProjectLayout>
   );
 };

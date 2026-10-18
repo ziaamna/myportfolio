@@ -6,12 +6,18 @@ import ProjectOverview from '../../components/project/ProjectOverview';
 import TechStack from '../../components/project/TechStack';
 import TechnicalHighlights from '../../components/project/TechnicalHighlights';
 
+
+import plas from '../../assets/plas.png';
+import dim from '../../assets/dim.png';
+import final from '../../assets/final.png';
+import draw from '../../assets/draw.png';
+
 // To show a big picture at the bottom of this page:
 // 1. Put your image in src/assets/ (for example crescent-lantern.jpg)
 // 2. Uncomment the import line below and make the file name match yours
 // 3. Delete the line that says: const projectImage: string = '';
 // import projectImage from '../../assets/crescent-lantern.jpg';
-const projectImage: string = '';
+//const projectImage: string = '';
 
 const CrescentLantern = () => {
   const { isDarkMode } = useDarkMode();
@@ -57,27 +63,26 @@ const CrescentLantern = () => {
         />
       </ProjectSection>
 
-      <ProjectSection title="Project Photo">
-        {projectImage ? (
-          <img
-            src={projectImage}
-            alt="Crescent lantern"
-            className="w-full rounded-lg shadow-lg"
-            style={{ maxHeight: '600px', objectFit: 'contain' }}
-          />
-        ) : (
-          <div
-            className="w-full rounded-lg flex items-center justify-center text-center p-6"
-            style={{
-              minHeight: '320px',
-              border: `2px dashed ${themeColors.colors.pink[300]}`,
-              color: isDarkMode ? themeColors.colors.white : themeColors.text.secondary
-            }}
-          >
-            Add your project photo here
-          </div>
-        )}
-      </ProjectSection>
+   
+
+<ProjectSection title="Project Photos">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {[draw, final, plas, dim].map((item) => (
+      <div
+        key={item}
+        className="w-full h-64 rounded-lg overflow-hidden"
+      >
+        <img
+          src={item}
+          alt="Crescent Lantern project"
+          className="w-full h-full object-contain rounded-lg"
+        />
+      </div>
+    ))}
+  </div>
+</ProjectSection>
+
+
     </ProjectLayout>
   );
 };

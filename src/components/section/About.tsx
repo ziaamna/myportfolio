@@ -21,8 +21,9 @@ const About = () => {
   // 1. Leave SHOW_STICKER_NUMBERS = true to see a number on every sticker.
   // 2. Write the numbers of the stickers you want to remove inside hiddenStickerIds, like [3, 7, 12].
   // 3. When you're done, change SHOW_STICKER_NUMBERS to false.
-  const SHOW_STICKER_NUMBERS = true;
-  const hiddenStickerIds: number[] = [];
+
+  const SHOW_STICKER_NUMBERS = false;
+ const hiddenStickerIds: number[] = [1,2,3,4,5,6, 7,8, 9,10, 11, 12, 13, 14, 15, 16,17,18];
 
   const roles = [
     'Mechanical Engineering Student @ Georgia Tech'
@@ -199,7 +200,7 @@ const About = () => {
       : isMobile
         ? Math.max(-150, Math.min(150, finalX * 0.5))
         : finalX;
-    const constrainedFinalY = isVerySmall ? finalY * 0.6 : finalY * 0.8;
+         const constrainedFinalY = isVerySmall ? finalY * 0.6 : finalY * 0.8;
 
     const x = initialX + (constrainedFinalX - initialX) * progress;
     const y = initialY + (constrainedFinalY - initialY) * progress;

@@ -6,12 +6,21 @@ import ProjectOverview from '../../components/project/ProjectOverview';
 import TechStack from '../../components/project/TechStack';
 import TechnicalHighlights from '../../components/project/TechnicalHighlights';
 
+//import robot from '../../assets/robot.jpg';
+//import drivetrain from '../../assets/drivetrain.jpg';
+//import flapper from '../../assets/flapper.jpg';
+import code from '../../assets/code.png';
+import track from '../../assets/track.png';
+import robot from '../../assets/robot.png';
+import cad from '../../assets/cad.png';
 // To show a big picture at the bottom of this page:
 // 1. Put your image in src/assets/ (for example arena-robot.jpg)
 // 2. Uncomment the import line below and make the file name match yours
 // 3. Delete the line that says: const projectImage: string = '';
 // import projectImage from '../../assets/arena-robot.jpg';
-const projectImage: string = '';
+//const projectImage: string = '';
+
+
 
 const ArenaRobot = () => {
   const { isDarkMode } = useDarkMode();
@@ -59,27 +68,26 @@ const ArenaRobot = () => {
         />
       </ProjectSection>
 
-      <ProjectSection title="Project Photo">
-        {projectImage ? (
-          <img
-            src={projectImage}
-            alt="Autonomous arena robot"
-            className="w-full rounded-lg shadow-lg"
-            style={{ maxHeight: '600px', objectFit: 'contain' }}
-          />
-        ) : (
-          <div
-            className="w-full rounded-lg flex items-center justify-center text-center p-6"
-            style={{
-              minHeight: '320px',
-              border: `2px dashed ${themeColors.colors.pink[300]}`,
-              color: isDarkMode ? themeColors.colors.white : themeColors.text.secondary
-            }}
-          >
-            Add your project photo here
-          </div>
-        )}
-      </ProjectSection>
+      
+
+
+
+<ProjectSection title="Project Photos">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {[robot, cad, track, code].map((image, index) => (
+      <img
+        key={index}
+        src={image}
+        alt={`Arena robot project ${index + 1}`}
+        className="w-full h-64 rounded-lg object-contain"
+      />
+    ))}
+  </div>
+</ProjectSection>
+
+
+
+
     </ProjectLayout>
   );
 };

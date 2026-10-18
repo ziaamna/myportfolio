@@ -11,7 +11,10 @@ import TechnicalHighlights from '../../components/project/TechnicalHighlights';
 // 2. Uncomment the import line below and make the file name match yours
 // 3. Delete the line that says: const projectImage: string = '';
 // import projectImage from '../../assets/row-weeding-robot.jpg';
-const projectImage: string = '';
+import done from '../../assets/done.png';
+import pic from '../../assets/pic.png';
+import row from '../../assets/row.png';
+import wheel from '../../assets/wheel.png';
 
 const RowWeedingRobot = () => {
   const { isDarkMode } = useDarkMode();
@@ -57,27 +60,25 @@ const RowWeedingRobot = () => {
         />
       </ProjectSection>
 
-      <ProjectSection title="Project Photo">
-        {projectImage ? (
-          <img
-            src={projectImage}
-            alt="Row-weeding robot drivetrain CAD model"
-            className="w-full rounded-lg shadow-lg"
-            style={{ maxHeight: '600px', objectFit: 'contain' }}
-          />
-        ) : (
-          <div
-            className="w-full rounded-lg flex items-center justify-center text-center p-6"
-            style={{
-              minHeight: '320px',
-              border: `2px dashed ${themeColors.colors.pink[300]}`,
-              color: isDarkMode ? themeColors.colors.white : themeColors.text.secondary
-            }}
-          >
-            Add your project photo here
-          </div>
-        )}
-      </ProjectSection>
+
+<ProjectSection title="Project Photos">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {[row, done, pic, wheel].map((item) => (
+      <div
+        key={item}
+        className="w-full h-64 rounded-lg overflow-hidden"
+      >
+        <img
+          src={item}
+          alt="Crescent Lantern project"
+          className="w-full h-full object-contain rounded-lg"
+        />
+      </div>
+    ))}
+  </div>
+</ProjectSection>
+
+
     </ProjectLayout>
   );
 };

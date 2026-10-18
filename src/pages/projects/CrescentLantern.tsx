@@ -65,7 +65,7 @@ const CrescentLantern = () => {
 
    
 
-<ProjectSection title="Project Photos">
+<ProjectSection title=".">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
     {[draw, final, plas, dim].map((item) => (
       <div

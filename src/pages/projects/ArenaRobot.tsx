@@ -72,7 +72,7 @@ const ArenaRobot = () => {
 
 
 
-<ProjectSection title="Project Photos">
+<ProjectSection title=".">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
     {[robot, cad, track, code].map((image, index) => (
       <img

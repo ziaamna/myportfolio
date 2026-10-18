@@ -3,12 +3,12 @@ import aboutMeJournalPng from './journal.PNG';
 import aboutMeJournalWebp800 from './journal.PNG';
 import aboutMeJournalWebp400 from './journal.PNG';
 // Add your profile images here
-import profile1 from './picture1.jpeg';
+import profile1 from './coming_soon.png';
 // import profile2 from './profile2.jpg';
 // import profile3 from './profile3.jpg';
 const profile2 = '';
 const profile3 = '';
-import comingSoon from './coming_soon.jpg';
+//import comingSoon from './coming_soon.jpg';
 
 //import dividerPng from './divider.PNG';
 //import dividerWebp from './divider-original.webp';
@@ -32,7 +32,7 @@ export const mainAssets = {
   profile1,
   profile2,
   profile3,
-  comingSoon,
+
   //divider,
  // dividerPng,
   //dividerWebp,
@@ -46,7 +46,7 @@ export {
   profile1,
   profile2,
   profile3,
-  comingSoon,
+
   //divider,
   //dividerPng,
   //dividerWebp,

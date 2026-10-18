@@ -11,7 +11,7 @@ import TechnicalHighlights from '../../components/project/TechnicalHighlights';
 // 2. Uncomment the import line below and make the file name match yours
 // 3. Delete the line that says: const projectImage: string = '';
 // import projectImage from '../../assets/research.jpg';
-const projectImage: string = '';
+//const projectImage: string = '';
 
 const ResearchProject = () => {
   const { isDarkMode } = useDarkMode();

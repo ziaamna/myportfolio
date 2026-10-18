@@ -30,7 +30,7 @@ const Projects = () => {
       detailsUrl: "/projects/project-two"
     },
     {
-      title: "Row-Weeding Robot Drivetrain",
+      title: "Row-Weeding Robot Design",
       description: "Modeled a multi-part wheel subsystem in SolidWorks for an autonomous agricultural robot, improving fit, stability, and manufacturability through iterative CAD and tolerance analysis.",
       technologies: ["SolidWorks", "Assemblies", "Tolerance Analysis", "DFM"],
       detailsUrl: "/projects/project-three"

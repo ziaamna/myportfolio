@@ -12,6 +12,8 @@ import TechnicalHighlights from '../../components/project/TechnicalHighlights';
 // 3. Delete the line that says: const projectImage: string = '';
 // import projectImage from '../../assets/research.jpg';
 //const projectImage: string = '';
+import paper from '../../assets/paper.png';
+import img from '../../assets/img.png';
 
 const ResearchProject = () => {
   const { isDarkMode } = useDarkMode();
@@ -58,20 +60,19 @@ const ResearchProject = () => {
         />
       </ProjectSection>
 
-<ProjectSection title="Project Photos">
+
+<ProjectSection title=".">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {[1, 2, 3, 4].map((item) => (
+    {[paper, img].map((item) => (
       <div
         key={item}
-        className="w-full h-64 rounded-lg flex items-center justify-center"
-        style={{
-          border: `2px dashed ${themeColors.colors.pink[300]}`,
-          color: isDarkMode
-            ? themeColors.colors.white
-            : themeColors.text.secondary,
-        }}
+        className="w-full h-64 rounded-lg overflow-hidden"
       >
-        <span className="text-4xl">📷</span>
+        <img
+          src={item}
+          alt="Crescent Lantern project"
+          className="w-full h-full object-contain rounded-lg"
+        />
       </div>
     ))}
   </div>

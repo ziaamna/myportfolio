@@ -27,7 +27,7 @@ const RowWeedingRobot = () => {
           className="text-4xl font-bold mb-2"
           style={{ color: isDarkMode ? themeColors.colors.white : themeColors.colors.pink[500] }}
         >
-          Row-Weeding Robot Drivetrain
+          Row-Weeding Robot Design 
         </h1>
         <p
           className="text-lg"
@@ -61,7 +61,7 @@ const RowWeedingRobot = () => {
       </ProjectSection>
 
 
-<ProjectSection title="Project Photos">
+<ProjectSection title=".">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
     {[row, done, pic, wheel].map((item) => (
       <div

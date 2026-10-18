@@ -5,7 +5,7 @@ import AsciiMorphText from '../AsciiMorphText';
 import TypewriterCarousel from '../TypewriterCarousel';
 import { useDarkMode } from '../../contexts/DarkModeContext';
 import { useThemeColors, withAlpha } from '../../hooks/useThemeColors';
-import { profile1, profile2, profile3, stickers as stickerImages } from '../../assets';
+import { profile1, stickers as stickerImages } from '../../assets';
 
 
 const About = () => {

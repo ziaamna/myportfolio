@@ -6,8 +6,8 @@ import aboutMeJournalWebp400 from './journal.PNG';
 import profile1 from './coming_soon.png';
 // import profile2 from './profile2.jpg';
 // import profile3 from './profile3.jpg';
-const profile2 = '';
-const profile3 = '';
+////const profile2 = '';
+//const profile3 = '';
 //import comingSoon from './coming_soon.jpg';
 
 //import dividerPng from './divider.PNG';
@@ -30,8 +30,8 @@ export const mainAssets = {
   aboutMeJournalWebp800,
   aboutMeJournalWebp400,
   profile1,
-  profile2,
-  profile3,
+  //profile2,
+  //profile3,
 
   //divider,
  // dividerPng,
@@ -44,8 +44,8 @@ export {
   aboutMeJournalWebp800,
   aboutMeJournalWebp400,
   profile1,
-  profile2,
-  profile3,
+  //profile2,
+  //profile3,
 
   //divider,
   //dividerPng,

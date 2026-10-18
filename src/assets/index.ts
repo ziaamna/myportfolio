@@ -3,7 +3,7 @@ import aboutMeJournalPng from './journal.PNG';
 import aboutMeJournalWebp800 from './journal.PNG';
 import aboutMeJournalWebp400 from './journal.PNG';
 // Add your profile images here
-import profile1 from './coming_soon.png';
+import profile1 from './picture1.jpeg';
 // import profile2 from './profile2.jpg';
 // import profile3 from './profile3.jpg';
 ////const profile2 = '';

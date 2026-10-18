@@ -37,13 +37,13 @@ const About = () => {
  const aboutParagraphs = [
   <>
     I'm a mechanical engineering student at Georgia Tech who loves
-    <strong className="font-bold"> designing and building things</strong>.
+  <strong className="font-bold"> designing and building things</strong>.
     My research work includes multiphase flow simulations and using
     <strong className="font-bold"> AI and machine learning</strong> to predict how flows evolve.
   </>,
   <>
     I'm especially inspired by the
-    <strong className="font-bold"> engineering behind Formula 1</strong>
+    <strong className="font-bold"> engineering behind Formula 1 </strong>{" "}
     and how design and problem-solving come together to make a car perform.
     Outside of engineering, I enjoy
     <strong className="font-bold"> art, creating things, and playing tennis</strong>.

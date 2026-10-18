@@ -41,6 +41,7 @@ const ResearchProject = () => {
           paragraphs={[
             "I generate high-fidelity multiphase turbulence simulations on Aurora for MFlowDB, an open-source dataset built with Argonne National Lab and NVIDIA. The dataset replaces costly physical experiments with simulation data that can be produced at scale.",
             "I use fluid mechanics principles to set up the simulations and check that the outputs are physically reasonable. I then test deep learning models on the dataset to predict how flows evolve across different turbulence regimes.",
+            "*The research paper pictured below has not been published yet and is still a work in progress*"
           ]}
         />
       </ProjectSection>
